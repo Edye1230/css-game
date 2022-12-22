@@ -4,13 +4,19 @@
     font-family: sans-serif;
 }
 
+body{
+    background-image: url("https://i.pinimg.com/736x/26/89/e4/2689e47bf4e96b2fae132c150138ccec.jpg");
+
+}
+
 .contenedor_total{
     padding: 0px;
     margin: auto;
     width: 500px;
     height: 500px;
-    background-color: #ffb;
-    border: 5px dashed #aa4;
+    background-color: aliceblue;
+    border: 5px dashed blueviolet;
+    background-image: url("https://i.pinimg.com/originals/4d/fe/41/4dfe41dd4b4814a64afcdb909fcc3416.png");
 }
 
 .pointer{
@@ -18,7 +24,7 @@
     height: fit-content;
     margin-top: 30px;
     border-bottom: 0px;
-    color: #fff;
+    color: black;
     font-size: 20px;
     text-align: center;
     padding: auto;
@@ -26,7 +32,7 @@
 }
 
 #bolita{
-    background-color: #f00;
+    background-color: red;
     border: 4px dashed #b22;
     width: 50px;
     height: 50px;
@@ -34,4 +40,17 @@
     transition: all 0.3s;
     border-width: 2px;
     cursor: pointer;
+    position: absolute;
+}
+
+#minas{
+    background-color: black;
+    width: 45px;
+    height: 45px;
+    border-radius: 30px;
+    transition: all 0.3s;
+    border-width: 2px;
+    cursor: pointer;
+    position: absolute;
+    color: black;
 }
