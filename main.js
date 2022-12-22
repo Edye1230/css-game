@@ -1,11 +1,17 @@
-document.getElementById("bolita").addEventListener("click", sumarPuntos);
-
 let puntos = 0;
 let num1, num2, num3, num4;
 
-function sumarPuntos() {
+//let emojis_minas = ["👻", "💀", "☠", "💩", "👹"];
+
+
+document.getElementById("bolita").addEventListener("click", clickBolita);
+
+function clickBolita() {
+  //  let emoji_aletorio = emojis_minas[Math.floor(Math.random() * emojis_minas.length)];
+
     puntos++;
     document.getElementById("puntos").innerHTML = `Puntos: ${puntos}`;
+
     num1 = Math.round(Math.random() * 450);
     num2 = Math.round(Math.random() * 450);
     num3 = Math.round(Math.random() * 450);
@@ -14,41 +20,53 @@ function sumarPuntos() {
     document.getElementById("bolita").style.marginTop = num1 + "px";
     document.getElementById("bolita").style.marginLeft = num2 + "px";
 
+    let mina = document.createElement("div");
+    mina.setAttribute("class", "minas");
+    mina.setAttribute("id", "minas_id");
+    //mina.setAttribute("src", "https://www.pngmart.com/files/7/Mine-Transparent-Background.png");
+    mina.setAttribute("data-toggle", "modal");
+    mina.setAttribute("data-target", "#exampleModal");
+    
+
+    let textNode = document.createTextNode("👻"); 
+    mina.appendChild(textNode);
 
 
-  let newDiv = document.createElement("div");
-    newDiv.setAttribute("id", "minas");
-    newDiv.style.marginTop = num3 + "px";
-    newDiv.style.marginLeft = num4 + "px";
+    mina.style.marginTop = num3 + "px";
+    mina.style.marginLeft = num4 + "px";
+    mina.addEventListener("click", clickMina);
 
-    document.getElementById('contenedor_xx').appendChild(newDiv);  
+
+    document.getElementById('minas_negras').appendChild(mina);  
+
 };
 
-function restarTiempo() {
-    tiempo--;
-    document.getElementById("tiempo").innerHTML = `Tiempo: ${tiempo}`;
-    if (tiempo == 0) {
-        clearInterval(tiempoInterval);
-        clearInterval(puntosInterval);
-        alert("Perdiste");
-    };
-};
 
-document.getElementById("bolita").addEventListener("mouseleave", movimiento);
+///////////////////////////////////////////////////////////////////////////////////////
 
-function restablecer() {
-    document.getElementById("bolita").style.backgroundColor = "red";
+function clickMina() {
+    puntos--;
+    document.getElementById("puntos").innerHTML = `Puntos: ${puntos}`;
+    document.getElementById('mensaje_modal').innerHTML = `Puntaje final: ${puntos}`;
+
 }
 
-function movimiento() {
+document.getElementById("boton_reintentar").addEventListener("click", recargar);
 
-    if (puntos > 0 ) document.getElementById("minas").addEventListener("click", perdida);
+function recargar() {
 
-    function perdida(){
-        alert("Perdiste");
-        location.reload();
-    }
+    puntos = 0;
+    document.getElementById("bolita").style.marginTop = 0 + "px";
+    document.getElementById("bolita").style.marginLeft = 0 + "px";
+    document.getElementById("puntos").innerHTML = `Puntos: ${puntos}`;
 
-    if (puntos === 100 ) alert("Ganaste");
+    document.getElementById("minas_negras").remove();
 
+    let minas_negras = document.createElement("div");
+    minas_negras.setAttribute("id", "minas_negras");
+
+    document.getElementById('contenedor_xx').appendChild(minas_negras);  
+
+
+    //location.reload();
 }
