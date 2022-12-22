@@ -1,3 +1,6 @@
+var sound = new Audio();
+sound.src = "./waza.mp3"
+
 let puntos = 0;
 let num1, num2, num3, num4;
 
@@ -39,6 +42,9 @@ function clickBolita() {
 
     document.getElementById('minas_negras').appendChild(mina);  
 
+
+    if(puntos === 100) {}
+
 };
 
 
@@ -48,7 +54,7 @@ function clickMina() {
     puntos--;
     document.getElementById("puntos").innerHTML = `Puntos: ${puntos}`;
     document.getElementById('mensaje_modal').innerHTML = `Puntaje final: ${puntos}`;
-
+    sound.play();
 }
 
 document.getElementById("boton_reintentar").addEventListener("click", recargar);
